@@ -11,7 +11,7 @@ extraEnv: {}
 host:
   ip: $(HOST_IP)
   iptables: true
-  interface: cbr0
+  interface: cni0
   port: 8181
 
 image:

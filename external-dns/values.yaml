@@ -59,7 +59,8 @@ policy: upsert-only
 
 ## Annotations to be added to pods
 ##
-podAnnotations: {}
+podAnnotations:
+  iam.amazonaws.com/role: kube-dns
 
 podLabels: {}
 
