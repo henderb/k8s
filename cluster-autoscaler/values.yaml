@@ -27,7 +27,7 @@ awsRegion: us-west-2
 # Currently only `gce`, `aws` & `spotinst` are supported
 cloudProvider: aws
 
-sslCertPath: /etc/ssl/certs/ca-certificates.crt
+sslCertPath: /etc/pki/tls/certs/ca-bundle.crt
 
 # Configuration file for cloud provider
 cloudConfigPath: /etc/gce.conf
@@ -71,7 +71,8 @@ podDisruptionBudget: |
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 nodeSelector: {}
 
-podAnnotations: {}
+podAnnotations:
+  iam.amazonaws.com/role: kube-autoscaler
 podLabels: {}
 replicaCount: 1
 
