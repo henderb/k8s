@@ -1,7 +1,7 @@
 CLUSTER_NAME=${CLUSTER_NAME:-henderb}
 SECURITY_GROUP=${SECURITY_GROUP:-sg-a71864d6}
 VPC=${VPC:-vpc-ffe58c9a}
-SSH_KEYPAIR=${SSH_KEYPAIR:-henderb}
+SSH_KEYPAIR=${SSH_KEYPAIR:-henderb2}
 
 SUBNETS="subnet-1e841c69 subnet-2c7f0549 subnet-f968d5a0"
 NODE_SIZES="m5.large c5.large r4.large"

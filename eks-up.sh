@@ -2,7 +2,7 @@ CLUSTER_NAME=${CLUSTER_NAME:-henderb}
 SUBNETS=${SUBNETS:-subnet-1e841c69,subnet-2c7f0549,subnet-f968d5a0}
 MASTERS_SECURITY_GROUP=${SECURITY_GROUP:-sg-a71864d6}
 VPC=${VPC:-vpc-ffe58c9a}
-SSH_KEYPAIR=${SSH_KEYPAIR:-henderb}
+SSH_KEYPAIR=${SSH_KEYPAIR:-henderb2}
 
 CF_TEMPLATE=https://henderb-cf-templates.s3-us-west-2.amazonaws.com/amazon-eks-nodegroup-core.yaml
 
@@ -25,6 +25,7 @@ until [ "${CLUSTER_STATUS}" == "ACTIVE" ]; do
             --role-arn arn:aws:iam::157842721751:role/aws-eks \
             --resources-vpc-config subnetIds=${SUBNETS},securityGroupIds=${MASTERS_SECURITY_GROUP}
 
+        set +e
         aws cloudformation create-stack \
             --stack-name ${CLUSTER_NAME}-eks-nodes-core \
             --template-url ${CF_TEMPLATE} \
@@ -33,6 +34,7 @@ until [ "${CLUSTER_STATUS}" == "ACTIVE" ]; do
                 ParameterKey=ClusterControlPlaneSecurityGroup,ParameterValue=${MASTERS_SECURITY_GROUP} \
                 ParameterKey=ClusterName,ParameterValue=${CLUSTER_NAME} \
                 ParameterKey=VpcId,ParameterValue=${VPC}
+        set -e
     fi
     CLUSTER_STATUS=$(aws eks describe-cluster --name ${CLUSTER_NAME} --query cluster.status | tr -d \")
 done

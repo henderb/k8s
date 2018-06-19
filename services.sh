@@ -1,3 +1,4 @@
+kubectl config set-context $(kubectl config current-context) --namespace=kube-system
 helm install --name kube2iam stable/kube2iam -f kube2iam/values.yaml
 
 helm install --name nginx-ingress stable/nginx-ingress

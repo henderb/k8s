@@ -1,6 +1,7 @@
-extraArgs: {}
-#   base-role-arn: arn:aws:iam::0123456789:role/
-#   default-role: kube2iam-default
+extraArgs:
+  base-role-arn: "arn:aws:iam::157842721751:role/"
+  default-role: kube2iam-default
+  debug: true
 #   api-server: ...
 #   api-token: ...
 
